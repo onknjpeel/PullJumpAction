@@ -7,12 +7,14 @@ public class PullingJump : MonoBehaviour
     private Vector3 clickPosition;
     private Rigidbody rb;
     private bool isCanJump;
+    private AudioSource audioSource;
     [SerializeField]
     private float jumpPower = 10;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class PullingJump : MonoBehaviour
             Vector3 dist = clickPosition - Input.mousePosition;
             if (dist.sqrMagnitude == 0) { return; }
             rb.velocity = dist.normalized * jumpPower;
+            audioSource.Play();
         }
     }
 
