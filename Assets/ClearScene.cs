@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class FlowScript : MonoBehaviour
+public class ClearScene : MonoBehaviour
 {
-    PullingJump adress;
-
+    public string nextSceneName;
     // Start is called before the first frame update
     void Start()
     {
-        adress = GetComponent<PullingJump>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ItemScript.isClear)
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 }

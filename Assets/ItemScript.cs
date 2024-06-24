@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemScript : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class ItemScript : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public static bool isClear;
+
     // Start is called before the first frame update
     void Start()
     {
+        isClear = false;
         animator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -41,6 +45,7 @@ public class ItemScript : MonoBehaviour
 
     private void DestroySelf()
     {
+        isClear = true;
         Destroy(gameObject);
     }
 }
